@@ -89,4 +89,9 @@ class TBIBCheckForUpdate {
       await prefs.setBool(CacheKey.checkNeedUpdate, false);
     }
   }
+
+  /// force check update
+  static void forceCheckUpdate() {
+    _showAlert();
+  }
 }
