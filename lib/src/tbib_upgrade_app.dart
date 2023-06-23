@@ -24,8 +24,8 @@ class TBIBCheckForUpdate {
   /// check for update
   static Future<bool> checkForUpdate() async {
     final prefs = await SharedPreferences.getInstance();
-    // ignore: use_if_null_to_convert_nulls_to_bools
     var needUpdate = false;
+    // ignore: use_if_null_to_convert_nulls_to_bools
     if (prefs.getBool(CacheKey.checkNeedUpdate) == true) {
       needUpdate = await _showAlert();
     } else {
