@@ -25,9 +25,9 @@ class TBIBCheckForUpdate {
   static Future<bool> checkForUpdate() async {
     final prefs = await SharedPreferences.getInstance();
     // ignore: use_if_null_to_convert_nulls_to_bools
+    var needUpdate = false;
     if (prefs.getBool(CacheKey.checkNeedUpdate) == true) {
-      await _showAlert();
-      return true;
+      needUpdate = await _showAlert();
     } else {
       // print(DateTime.now().isAfter(
       //     DateTime.parse(prefs.getString(CacheKey.checkForUpdateDate))));
@@ -39,22 +39,20 @@ class TBIBCheckForUpdate {
             CacheKey.checkForUpdateDate,
             DateTime.now().toString(),
           );
-          await _showAlert();
-          return true;
+          needUpdate = await _showAlert();
         }
       } else {
         await prefs.setString(
           CacheKey.checkForUpdateDate,
           DateTime.now().add(_checkNewVersionEveryTime).toString(),
         );
-        await _showAlert();
-        return true;
+        needUpdate = await _showAlert();
       }
     }
-    return false;
+    return needUpdate;
   }
 
-  static Future<void> _showAlert() async {
+  static Future<bool> _showAlert() async {
     final prefs = await SharedPreferences.getInstance();
 
     final upgrader = Upgrader(
@@ -72,7 +70,7 @@ class TBIBCheckForUpdate {
           MaterialPageRoute<void>(
             builder: (context) => const NewVersionScreen(),
           ),
-          (route) => false,
+          (route) => true,
         );
         return true;
       },
@@ -88,10 +86,12 @@ class TBIBCheckForUpdate {
     } else {
       await prefs.setBool(CacheKey.checkNeedUpdate, false);
     }
+    return needUpdate;
   }
 
   /// force check update
-  static void forceCheckUpdate() {
-    _showAlert();
+  static Future<bool> forceCheckUpdate() async {
+    final needUpdate = await _showAlert();
+    return needUpdate;
   }
 }
