@@ -1,3 +1,8 @@
+## 1.0.3
+
+
+- back to flutter 3.10 minimum
+
 ## 1.0.2
 
 - upgrade dependency (upgrader)
