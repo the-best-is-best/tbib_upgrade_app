@@ -1,3 +1,10 @@
+## 1.0.2
+
+- upgrade dependency (upgrader)
+## 1.0.1
+
+- support dart 2.18.0 and above
+
 ## 1.0.0
 
 - stable version

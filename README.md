@@ -17,3 +17,15 @@ if(newUpdate){
 }
 Navigator.push(context, HomeScreen());
 ```
+
+<h3>force upgrade </h3>
+
+```dart
+bool newUpdate= TBIBCheckForUpdate.forceCheckUpdate();
+
+if(newUpdate){
+    return;
+}
+Navigator.push(context, HomeScreen());
+
+```
