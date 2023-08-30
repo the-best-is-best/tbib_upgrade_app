@@ -1,6 +1,6 @@
 name: tbib_upgrade_app
 description: This package for check app update version by upgrader.
-version: 1.0.4-beta
+version: 1.0.5-beta
 homepage: "https://github.com/the-best-is-best/tbib_upgrade_app"
 
 environment:
