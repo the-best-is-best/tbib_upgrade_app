@@ -27,5 +27,10 @@ if(newUpdate){
     return;
 }
 Navigator.push(context, HomeScreen());
+```
 
+can add your custom upgrader
+
+```dart
+TBIBCheckForUpdate.customCheckForUpdate(Upgrader())
 ```

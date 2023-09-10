@@ -1,4 +1,12 @@
-## 1.0.3
+## 1.0.6
+
+- can add your custom upgrader
+
+```dart
+TBIBCheckForUpdate.customCheckForUpdate(Upgrader())
+```
+
+# 1.0.3
 
 
 - back to flutter 3.10 minimum
