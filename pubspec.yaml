@@ -1,6 +1,6 @@
 name: tbib_upgrade_app
 description: This package for check app update version by upgrader.
-version: 1.0.6
+version: 1.0.7
 homepage: "https://github.com/the-best-is-best/tbib_upgrade_app"
 
 environment:
@@ -10,10 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   shared_preferences: ^2.1.2
-  upgrader: ^8.1.0
+  upgrader: ^8.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
+  mocktail: ^1.0.1
   very_good_analysis: ^5.0.0

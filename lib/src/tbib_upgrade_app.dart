@@ -12,15 +12,6 @@ class TBIBCheckForUpdate {
 
   static late Duration _checkNewVersionEveryTime;
 
-  /// init check update
-  static void init(
-    GlobalKey<NavigatorState> navigatorKey, {
-    Duration checkNewVersionEveryTime = const Duration(hours: 6),
-  }) {
-    _checkNewVersionEveryTime = checkNewVersionEveryTime;
-    _navigatorKey = navigatorKey;
-  }
-
   /// check for update
   static Future<bool> checkForUpdate() async {
     final prefs = await SharedPreferences.getInstance();
@@ -50,6 +41,27 @@ class TBIBCheckForUpdate {
       }
     }
     return needUpdate;
+  }
+
+  /// custom check update
+  static Future<bool> customCheckForUpdate(Upgrader yourUpgrader) async {
+    final needUpdate = await _showAlert(yourUpgrader: yourUpgrader);
+    return needUpdate;
+  }
+
+  /// force check update
+  static Future<bool> forceCheckUpdate() async {
+    final needUpdate = await _showAlert();
+    return needUpdate;
+  }
+
+  /// init check update
+  static void init(
+    GlobalKey<NavigatorState> navigatorKey, {
+    Duration checkNewVersionEveryTime = const Duration(hours: 6),
+  }) {
+    _checkNewVersionEveryTime = checkNewVersionEveryTime;
+    _navigatorKey = navigatorKey;
   }
 
   static Future<bool> _showAlert({Upgrader? yourUpgrader}) async {
@@ -87,18 +99,6 @@ class TBIBCheckForUpdate {
     } else {
       await prefs.setBool(CacheKey.checkNeedUpdate, false);
     }
-    return needUpdate;
-  }
-
-  /// force check update
-  static Future<bool> forceCheckUpdate() async {
-    final needUpdate = await _showAlert();
-    return needUpdate;
-  }
-
-  /// custom check update
-  static Future<bool> customCheckForUpdate(Upgrader yourUpgrader) async {
-    final needUpdate = await _showAlert(yourUpgrader: yourUpgrader);
     return needUpdate;
   }
 }

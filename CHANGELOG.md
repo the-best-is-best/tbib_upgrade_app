@@ -1,3 +1,7 @@
+## 1.0.7
+
+- upgrade dependencies
+
 ## 1.0.6
 
 - can add your custom upgrader
